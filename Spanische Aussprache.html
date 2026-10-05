@@ -1,0 +1,108 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Spanische Aussprache</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: eine Folie pro Regel, großer Buchstabe links, Erklärung rechts; Quiz als letzte Folie */
+:root{
+  --bg:#f7f6f3; --fg:#1d1c1a; --muted:#7a766f; --line:#e2dfd8; --accent:#b8442a; --ok:#2f7a4f;
+  --display:"Fraunces",Georgia,serif; --body:"Instrument Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161514;--fg:#ece9e3;--muted:#8f8a82;--line:#2c2a27;--accent:#e2765c;--ok:#6fbf8c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161514;--fg:#ece9e3;--muted:#8f8a82;--line:#2c2a27;--accent:#e2765c;--ok:#6fbf8c;color-scheme:dark}
+html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55;padding-inline:20px;display:flex;flex-direction:column}
+header,footer{max-width:880px;width:100%;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-block:18px;color:var(--muted);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+main{flex:1;display:flex;align-items:center;max-width:880px;width:100%;margin:0 auto}
+.slide{width:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:48px;align-items:center}
+.glyph{font-family:var(--display);font-size:clamp(88px,18vw,180px);line-height:1;font-weight:400}
+.glyph small{display:block;font-family:var(--body);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:12px}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(24px,3.5vw,32px);margin:0 0 12px;text-wrap:balance}
+p{margin:0 0 20px;max-width:58ch}
+.ex{display:flex;flex-wrap:wrap;gap:10px}
+.ex span{border:1px solid var(--line);padding:6px 14px;border-radius:999px;font-size:15px}
+.ex b{font-weight:600;color:var(--accent)}
+.ex i{color:var(--muted);font-style:normal;margin-left:6px}
+nav{display:flex;gap:10px}
+button{font:inherit;font-size:14px;background:none;color:var(--fg);border:1px solid var(--line);padding:8px 18px;border-radius:999px;cursor:pointer}
+button:hover{border-color:var(--fg)}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button:disabled{opacity:.35;cursor:default;border-color:var(--line)}
+.bar{flex:1;height:2px;background:var(--line);margin:0 20px;position:relative}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--fg);transition:width .3s}
+.quiz{width:100%;max-width:620px}
+.q-meta{color:var(--muted);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.opts{display:grid;gap:10px;margin:20px 0}
+.opts button{text-align:left;border-radius:10px;padding:12px 16px;font-size:16px}
+.opts button.right{border-color:var(--ok);color:var(--ok)}
+.opts button.wrong{border-color:var(--accent);color:var(--accent)}
+.fb{min-height:1.5em;color:var(--muted);font-size:15px}
+@media (max-width:640px){.slide{grid-template-columns:1fr;gap:16px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header><span>Regeln · pronunciación</span><span style="display:flex;gap:14px;align-items:center"><span id="count"></span><button id="fs" title="Vollbild (F)">⛶ Vollbild</button></span></header>
+<main id="stage"></main>
+<footer><button id="prev">← Zurück</button><div class="bar"><i id="prog"></i></div><button id="next">Weiter →</button></footer>
+
+<script>
+const R=[
+ {g:"H",t:"Das H ist immer stumm",d:"Es wird einfach nicht gesprochen.",ex:[["<b>h</b>ola","ola"],["<b>h</b>ablar","ablar"]]},
+ {g:"J · G",s:"G vor e / i",t:"Kräftiges Ch im Rachen",d:"J immer und G vor e oder i klingen wie ein deutsches „Ch“ (wie in „Bach“) oder ein Hauch-H.",ex:[["<b>j</b>amón","chamón"],["<b>g</b>ente","chente"]]},
+ {g:"C",t:"K oder Th / S",d:"Vor a, o, u wie „K“. Vor e, i in Spanien wie englisches „th“, in Lateinamerika wie „S“.",ex:[["<b>c</b>asa","kasa"],["<b>c</b>erveza","therbetha / serbesa"]]},
+ {g:"Z",t:"Th in Spanien, S in Lateinamerika",d:"Wie das englische „th“ in thin – in Lateinamerika wie ein scharfes „S“.",ex:[["<b>z</b>apato","thapato / sapato"]]},
+ {g:"B · V",t:"Fast gleich: weiches B",d:"Beide werden weich zwischen den Lippen gesprochen. Ein deutsches „W“ gibt es nicht.",ex:[["<b>v</b>ente","bente"],["<b>b</b>ueno","bueno"]]},
+ {g:"Ñ",t:"Wie „nj“",d:"Wie das „gn“ in Lasagne oder im Französischen.",ex:[["Espa<b>ñ</b>a","Espanja"],["ni<b>ñ</b>o","ninjo"]]},
+ {g:"LL",t:"Meist wie J oder weiches Y",d:"In manchen Regionen, etwa Argentinien, klingt es wie „Sch“.",ex:[["<b>ll</b>amo","jamo"],["<b>ll</b>amo (Arg.)","schamo"]]},
+ {g:"R · RR",t:"Tippen oder rollen",d:"Ein einzelnes r ist ein kurzer Zungenschlag (wie in engl. butter). Das doppelte rr wird mit der Zungenspitze gerollt.",ex:[["pe<b>r</b>o","kurz"],["pe<b>rr</b>o","gerollt"],["guita<b>rr</b>a","gerollt"]]}
+];
+const Q=[
+ ["Wie klingt „hola“?",["ola","chola","hola mit H"],0],
+ ["Wie spricht man das J in „jamón“?",["wie deutsches J","wie Ch im Rachen","stumm"],1],
+ ["„casa“ beginnt mit einem …",["S-Laut","Th-Laut","K-Laut"],2],
+ ["Wie klingt „cerveza“ in Lateinamerika?",["serbesa","kerveza","therbetha"],0],
+ ["Das Z in „zapato“ klingt in Spanien wie …",["ts","englisches th","sch"],1],
+ ["Wie wird das V in „vente“ gesprochen?",["wie deutsches W","wie weiches B","wie F"],1],
+ ["Wie klingt „niño“?",["nino","ninjo","nicho"],1],
+ ["Wie klingt „llamo“ in Argentinien?",["lamo","jamo","schamo"],2],
+ ["Welches Wort hat ein gerolltes R?",["pero","perro","caro"],1],
+ ["Wie spricht man das G in „gente“?",["wie G in Garten","wie Ch","stumm"],1]
+];
+const N=R.length+1;let i=0,qi=0,score=0;
+const st=document.getElementById("stage");
+function draw(){
+ document.getElementById("count").textContent=i<R.length?`Regel ${i+1} / ${R.length}`:"Quiz";
+ document.getElementById("prog").style.width=((i+1)/N*100)+"%";
+ document.getElementById("prev").disabled=i===0;
+ document.getElementById("next").disabled=i===N-1;
+ if(i<R.length){const r=R[i];
+  st.innerHTML=`<div class="slide"><div class="glyph">${r.g}${r.s?`<small>${r.s}</small>`:""}</div><div><h2>${r.t}</h2><p>${r.d}</p><div class="ex">${r.ex.map(e=>`<span>${e[0]}<i>→ ${e[1]}</i></span>`).join("")}</div></div></div>`;
+ } else quiz();
+}
+function quiz(){
+ if(qi>=Q.length){st.innerHTML=`<div class="quiz"><div class="q-meta">Ergebnis</div><h2>${score} von ${Q.length} richtig</h2><p>${score===Q.length?"Perfekt – alle Regeln sitzen.":"Schau dir die Regeln nochmal an und versuch es erneut."}</p><button id="again">Quiz neu starten</button></div>`;
+  document.getElementById("again").onclick=()=>{qi=0;score=0;quiz()};return}
+ const [q,o,a]=Q[qi];
+ st.innerHTML=`<div class="quiz"><div class="q-meta">Frage ${qi+1} / ${Q.length}</div><h2>${q}</h2><div class="opts">${o.map((t,k)=>`<button data-k="${k}">${t}</button>`).join("")}</div><div class="fb" id="fb"></div></div>`;
+ st.querySelectorAll(".opts button").forEach(b=>b.onclick=()=>{
+  const k=+b.dataset.k;st.querySelectorAll(".opts button").forEach(x=>{x.disabled=true;if(+x.dataset.k===a)x.classList.add("right")});
+  if(k===a){score++;document.getElementById("fb").textContent="Richtig."}else{b.classList.add("wrong");document.getElementById("fb").textContent="Leider falsch."}
+  setTimeout(()=>{qi++;quiz()},1100);
+ });
+}
+document.getElementById("prev").onclick=()=>{if(i>0){i--;draw()}};
+document.getElementById("next").onclick=()=>{if(i<N-1){i++;draw()}};
+document.addEventListener("keydown",e=>{if(e.key==="ArrowRight")document.getElementById("next").click();if(e.key==="ArrowLeft")document.getElementById("prev").click()});
+const fsb=document.getElementById("fs");
+function toggleFS(){
+ const d=document,el=d.documentElement;
+ if(d.fullscreenElement||d.webkitFullscreenElement){(d.exitFullscreen||d.webkitExitFullscreen).call(d)}
+ else{const r=(el.requestFullscreen||el.webkitRequestFullscreen);if(!r){fsb.textContent="Nicht verfügbar";return}
+  try{const p=r.call(el);if(p&&p.catch)p.catch(()=>{fsb.textContent="Nicht verfügbar"})}catch(e){fsb.textContent="Nicht verfügbar"}}
+}
+fsb.onclick=toggleFS;
+document.addEventListener("keydown",e=>{if(e.key==="f"||e.key==="F")toggleFS()});
+document.addEventListener("fullscreenchange",()=>{fsb.textContent=document.fullscreenElement?"Vollbild beenden":"⛶ Vollbild"});
+draw();
+</script>
+
+</body></html>
